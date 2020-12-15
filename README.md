@@ -1,3 +1,38 @@
+## Usage
+
+Creates metric alarms for use with a Lambda Function
+* Success rate
+
+```hcl
+module "lambda_metric_alarms" {
+  source = "dod-iac/lambda-mteric-alarms/aws"
+
+  name           = var.application
+  environment    = var.environment
+  lambda_function_name = var.lambda_function_name
+
+  actions_alarm             = [var.sns_topic_arn]
+  actions_ok                = [var.sns_topic_arn]
+  actions_insufficient_data = [var.sns_topic_arn]
+
+  tags = {
+    Application = var.application
+    Environment = var.environment
+    Automation  = "Terraform"
+  }
+}
+```
+
+## Terraform Version
+
+Terraform 0.13. Pin module version to ~> 1.0.0 . Submit pull-requests to master branch.
+
+Terraform 0.11 and 0.12 are not supported.
+
+## License
+
+This project constitutes a work of the United States Government and is not subject to domestic copyright protection under 17 USC § 105.  However, because the project utilizes code licensed from contributors and other third parties, it therefore is licensed under the MIT License.  See LICENSE file for more information.
+
 ## Requirements
 
 | Name | Version |
