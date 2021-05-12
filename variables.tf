@@ -54,3 +54,15 @@ variable "threshold" {
   description = "The threshold for the metric alarm"
   default     = "99.5"
 }
+
+variable "evaluation_periods" {
+  type        = number
+  description = "The number of periods over which data is compared to the specified threshold."
+  default     = 2
+}
+
+variable "period" {
+  type        = number
+  description = "The period in seconds over which the specified statistic is applied."
+  default     = 120
+}
