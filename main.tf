@@ -2,6 +2,7 @@
  * ## Usage
  *
  * Creates metric alarms for use with a Lambda Function
+ *
  * * Success rate
  *
  * ```hcl
@@ -47,7 +48,7 @@ resource "aws_cloudwatch_metric_alarm" "success_rate" {
 
   comparison_operator = "LessThanThreshold"
   threshold           = var.threshold
-  evaluation_periods  = "1"
+  evaluation_periods  = var.evaluation_periods
   treat_missing_data  = "notBreaching"
 
   metric_query {
@@ -63,7 +64,7 @@ resource "aws_cloudwatch_metric_alarm" "success_rate" {
     metric {
       metric_name = "Invocations"
       namespace   = "AWS/Lambda"
-      period      = "300"
+      period      = var.period
       stat        = "Sum"
       unit        = "Count"
 
@@ -79,7 +80,7 @@ resource "aws_cloudwatch_metric_alarm" "success_rate" {
     metric {
       metric_name = "Errors"
       namespace   = "AWS/Lambda"
-      period      = "300"
+      period      = var.period
       stat        = "Sum"
       unit        = "Count"
 
