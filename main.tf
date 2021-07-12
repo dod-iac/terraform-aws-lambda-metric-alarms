@@ -10,7 +10,6 @@
  *   source = "dod-iac/lambda-mteric-alarms/aws"
  *
  *   name           = var.application
- *   environment    = var.environment
  *   lambda_function_name = var.lambda_function_name
  *
  *   actions_alarm             = [var.sns_topic_arn]
@@ -19,7 +18,7 @@
  *
  *   tags = {
  *     Application = var.application
- *     Environment = var.environment
+ *     Environment = "test"
  *     Automation  = "Terraform"
  *   }
  * }
@@ -38,8 +37,8 @@
 
 resource "aws_cloudwatch_metric_alarm" "success_rate" {
 
-  alarm_name        = format("%s-%s-success-rate", var.name, var.environment)
-  alarm_description = format("Success rate for %s %s", var.name, var.environment)
+  alarm_name        = format("%s-success-rate", var.name)
+  alarm_description = format("Success rate for %s", var.name)
 
   actions_enabled           = var.actions_enabled
   alarm_actions             = var.actions_alarm

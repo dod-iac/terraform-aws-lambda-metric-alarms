@@ -3,11 +3,6 @@ variable "name" {
   description = "The service name."
 }
 
-variable "environment" {
-  type        = string
-  description = "Environment tag, e.g prod."
-}
-
 variable "tags" {
   type        = map(string)
   description = "Tags applied to the metric alarms."

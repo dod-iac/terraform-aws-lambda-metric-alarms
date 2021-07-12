@@ -10,7 +10,6 @@ module "lambda_metric_alarms" {
   source = "dod-iac/lambda-mteric-alarms/aws"
 
   name           = var.application
-  environment    = var.environment
   lambda_function_name = var.lambda_function_name
 
   actions_alarm             = [var.sns_topic_arn]
@@ -19,7 +18,7 @@ module "lambda_metric_alarms" {
 
   tags = {
     Application = var.application
-    Environment = var.environment
+    Environment = "test"
     Automation  = "Terraform"
   }
 }
@@ -67,7 +66,6 @@ No modules.
 | <a name="input_actions_insufficient_data"></a> [actions\_insufficient\_data](#input\_actions\_insufficient\_data) | List of insufficient data actions to take | `list(string)` | `[]` | no |
 | <a name="input_actions_ok"></a> [actions\_ok](#input\_actions\_ok) | List of ok actions to take | `list(string)` | `[]` | no |
 | <a name="input_enable_metric_alarm"></a> [enable\_metric\_alarm](#input\_enable\_metric\_alarm) | Enable the metric alarm | `bool` | `true` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Environment tag, e.g prod. | `string` | n/a | yes |
 | <a name="input_evaluation_periods"></a> [evaluation\_periods](#input\_evaluation\_periods) | The number of periods over which data is compared to the specified threshold. | `number` | `2` | no |
 | <a name="input_lambda_function_name"></a> [lambda\_function\_name](#input\_lambda\_function\_name) | The lambda function name for use with CloudWatch Metrics. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The service name. | `string` | n/a | yes |
